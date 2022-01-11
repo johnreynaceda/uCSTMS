@@ -10,13 +10,20 @@
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-
+    <link href='fullcalendar/main.css' rel='stylesheet' />
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css">
+    <script src='fullcalendar/main.js'></script>
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
     @livewireStyles
 
     <!-- Scripts -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="{{ mix('js/app.js') }}" defer></script>
     <style>
         [x-cloak] {
@@ -124,7 +131,7 @@
                             </a>
                             <a href="{{ route('office-query') }}" class="flex space-x-2 mb-2">
                                 <div
-                                    class="{{ Request::routeIs('office-query') ? 'bg-white cursor-pointer bg-opacity-20' : '' }} hover:bg-white cursor-pointer hover:bg-opacity-20 text-white rounded-lg py-2 px-3 flex-1 flex space-x-2 items-center ml-3 ">
+                                    class="{{ Request::routeIs('office-query') || Request::routeIs('office-openquery') ? 'bg-white cursor-pointer bg-opacity-20' : '' }} hover:bg-white cursor-pointer hover:bg-opacity-20 text-white rounded-lg py-2 px-3 flex-1 flex space-x-2 items-center ml-3 ">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -133,12 +140,12 @@
                                     <h1 class="text-md mt-1 font-semibold">Query Management</h1>
                                 </div>
                                 <div
-                                    class="{{ Request::routeIs('office-query') ? 'bg-gray-100' : 'bg-main1' }} w-4  rounded-l-3xl">
+                                    class="{{ Request::routeIs('office-query') || Request::routeIs('office-openquery') ? 'bg-gray-100' : 'bg-main1' }} w-4  rounded-l-3xl">
                                 </div>
                             </a>
-                            <a class="flex space-x-2 mb-2">
+                            <a href="{{ route('office-service') }}" class="flex space-x-2 mb-2">
                                 <div
-                                    class=" hover:bg-white cursor-pointer hover:bg-opacity-20 text-white rounded-lg py-2 px-3 flex-1 flex space-x-2 items-center ml-3 ">
+                                    class="{{ Request::routeIs('office-service') ? 'bg-white cursor-pointer bg-opacity-20' : '' }} hover:bg-white cursor-pointer hover:bg-opacity-20 text-white rounded-lg py-2 px-3 flex-1 flex space-x-2 items-center ml-3 ">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -146,12 +153,14 @@
                                     </svg>
                                     <h1 class="text-md mt-1 font-semibold">Student Service</h1>
                                 </div>
-                                <div class=" w-4  rounded-l-3xl">
+                                <div
+                                    class=" {{ Request::routeIs('office-service') ? 'bg-gray-100' : 'bg-main1' }} w-4  rounded-l-3xl">
                                 </div>
                             </a>
-                            <a class="flex space-x-2 mb-2">
+
+                            <a href="{{ route('office-appointment') }}" class="flex space-x-2 mb-2">
                                 <div
-                                    class=" hover:bg-white cursor-pointer hover:bg-opacity-20 text-white rounded-lg py-2 px-3 flex-1 flex space-x-2 items-center ml-3 ">
+                                    class="{{ Request::routeIs('office-appointment') ? 'bg-white cursor-pointer bg-opacity-20' : '' }} hover:bg-white cursor-pointer hover:bg-opacity-20 text-white rounded-lg py-2 px-3 flex-1 flex space-x-2 items-center ml-3 ">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -159,20 +168,22 @@
                                     </svg>
                                     <h1 class="text-md mt-1 font-semibold">Appointments</h1>
                                 </div>
-                                <div class=" w-4  rounded-l-3xl">
+                                <div
+                                    class="{{ Request::routeIs('office-appointment') ? 'bg-gray-100' : 'bg-main1' }} w-4  rounded-l-3xl">
                                 </div>
                             </a>
-                            <a class="flex space-x-2 mb-2">
+                            <a href="{{ route('office-calendar') }}" class="flex space-x-2 mb-2">
                                 <div
-                                    class="hover:bg-white cursor-pointer hover:bg-opacity-20 text-white rounded-lg py-2 px-3 flex-1 flex space-x-2 items-center ml-3 ">
+                                    class="{{ Request::routeIs('office-calendar') || Request::routeIs('office-manageAppointment') ? 'bg-white cursor-pointer bg-opacity-20' : '' }} hover:bg-white cursor-pointer hover:bg-opacity-20 text-white rounded-lg py-2 px-3 flex-1 flex space-x-2 items-center ml-3 ">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
                                     </svg>
                                     <h1 class="text-md mt-1 font-semibold">Calendar</h1>
                                 </div>
-                                <div class=" w-4  rounded-l-3xl">
+                                <div
+                                    class="{{ Request::routeIs('office-calendar') || Request::routeIs('office-manageAppointment') ? 'bg-gray-100' : 'bg-main1' }} w-4  rounded-l-3xl">
                                 </div>
                             </a>
                             <hr class="mt-2 mx-2 mb-3">

@@ -10,10 +10,21 @@ class Office extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function concerns(){
+    public function concerns()
+    {
         return $this->hasMany(Concern::class);
     }
-    public function userinformation(){
+    public function userinformation()
+    {
         return $this->belongsTo(UserInformation::class);
+    }
+
+    public function studentservices()
+    {
+        return $this->hasMany(StudentService::class);
+    }
+    public function appointmentschedules()
+    {
+        return $this->hasMany(AppointmentSchedule::class);
     }
 }

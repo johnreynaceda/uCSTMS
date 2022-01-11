@@ -1,7 +1,7 @@
 <nav class="border-b border-opacity-30 sticky top-0 "
     x-data="{atTop:window.pageYOffset || document.documentElement.scrollTop}"
     @scroll.window="atTop = window.pageYOffset || document.documentElement.scrollTop"
-    x-bind:class="atTop>0 ? 'shadow bg-main z-50' : ''">
+    x-bind:class="atTop>0 ? 'shadow bg-main z-40' : ''">
     <div class="mx-auto px-4 sm:px-6     lg:px-10">
         <div class="flex justify-between h-16">
             <div class="flex">
@@ -81,10 +81,10 @@
                         <div class="ml-3 relative" x-data="{userdrop:false}">
                             <div>
                                 <button type="button" @click="userdrop = !userdrop"
-                                    class="bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                    class="bg-white rounded-md flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                     id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                                     <span class="sr-only">Open user menu</span>
-                                    <img class="h-10 w-10 rounded-full" src="{{ auth()->user()->profile_photo_url }}"
+                                    <img class="h-10 w-10 rounded-md" src="{{ auth()->user()->profile_photo_url }}"
                                         alt="">
                                 </button>
                             </div>

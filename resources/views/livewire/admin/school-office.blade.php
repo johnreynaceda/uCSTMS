@@ -31,65 +31,65 @@
                     x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                     class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
                 <div
-                    class="inline-block align-bottom bg-white rounded-lg  overflow-hidden shadow-xl transform transition-all sm:my-24 sm:align-top sm:max-w-sm sm:w-full ">
-                    <div class="header border-b flex justify-between ite p-2">
+                    class="inline-block align-bottom bg-white rounded-md px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-7">
+                    <h1 class="text-main1  text-xl font-bold">
+                        New School Office
+                    </h1>
 
-                        <h1 class="font-semibold text-gray-700">Add New Office</h1>
-                        <button @click="addmodal=false" class=" text-red-500 hover:text-main">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="body flex p-2 py-5">
-                        <div class="flex-1 flex flex-col text-gray-700 items-start ">
-                            <label for="">School Office Name</label>
-                            <input type="text" wire:model.lazy="name" class="w-full rounded-lg"
-                                placeholder="Enter name...">
-                            @error('name') <span class="error text-sm text-red-500">{{ $message }}</span> @enderror
+                    <div class="grid grid-cols-1 row-gap-6 col-gap-4 sm:grid-cols-6 mt-4">
+                        <div class="sm:col-span-6 mb-1">
+                            <label for="first_name" class="block  font-medium leading-5 text-gray-700">
+                                School Office Name
+                            </label>
+                            <div class="mt-1 rounded-md shadow-sm">
+                                <input wire:model.lazy="name"
+                                    class="border h-10 rounded border-gray-400 p-2 block w-full  sm:leading-5"
+                                    placeholder="Enter name..." />
+                                @error('name') <span class="error text-sm text-red-500">{{ $message }}</span>
+                                @enderror
+                            </div>
                         </div>
+
+
                     </div>
-
-                    <div class="flex mt-5 mb-4 mx-2">
-
-                        <button wire:click="saveOffice"
-                            class="flex-1 p-2 bg-main hover:bg-main1 rounded-lg shadow-md font-semibold text-white">
-                            <span wire:loading.class="hidden">SAVE</span>
-                            <svg wire:loading.target="saveOffice" wire:loading.class="block" width="20"
-                                viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" class="w-8 hidden h-8">
-                                <defs>
-                                    <linearGradient x1="8.042%" y1="0%" x2="65.682%" y2="23.865%" id="a">
-                                        <stop stop-color="rgb(255, 255, 255)" stop-opacity="0" offset="0%"></stop>
-                                        <stop stop-color="rgb(255, 255, 255)" stop-opacity=".631" offset="63.146%">
-                                        </stop>
-                                        <stop stop-color="rgb(255, 255, 255)" offset="100%"></stop>
-                                    </linearGradient>
-                                </defs>
-                                <g fill="none" fill-rule="evenodd">
-                                    <g transform="translate(1 1)">
-                                        <path d="M36 18c0-9.94-8.06-18-18-18" id="Oval-2" stroke="url(#a)"
-                                            stroke-width="3">
-                                            <animateTransform attributeName="transform" type="rotate" from="0 18 18"
-                                                to="360 18 18" dur="0.9s" repeatCount="indefinite"></animateTransform>
-                                        </path>
-                                        <circle fill="rgb(255, 255, 255)" cx="36" cy="18" r="1">
-                                            <animateTransform attributeName="transform" type="rotate" from="0 18 18"
-                                                to="360 18 18" dur="0.9s" repeatCount="indefinite"></animateTransform>
-                                        </circle>
+                    <div class="mt-5 ">
+                        <div class="flex w-full justify-end space-x-2">
+                            <span wire:loading wire:target="saveOffice">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    style=" background: rgb(255, 255, 255) none repeat scroll 0% 0%; display: block; shape-rendering: auto;"
+                                    width="40px" height="40px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                                    <g transform="translate(50 50)">
+                                        <g>
+                                            <animateTransform attributeName="transform" type="rotate" values="0;72"
+                                                keyTimes="0;1" dur="0.3472222222222222s" repeatCount="indefinite">
+                                            </animateTransform>
+                                            <path
+                                                d="M21.817424229271428 -10 L29.817424229271428 -10 L29.817424229271428 10 L21.817424229271428 10 A24 24 0 0 1 16.25252002328415 17.659433538274886 L16.25252002328415 17.659433538274886 L18.724655978283728 25.267885668636115 L-0.2964743476193439 31.448225556135064 L-2.7686103026189235 23.839773425773835 A24 24 0 0 1 -11.772814452043587 20.9141301487237 L-11.772814452043587 20.9141301487237 L-18.244950407043167 25.616412167063487 L-30.000655452892637 9.43607227956453 L-23.528519497893058 4.733790261224746 A24 24 0 0 1 -23.528519497893058 -4.7337902612247404 L-23.528519497893058 -4.7337902612247404 L-30.000655452892637 -9.436072279564524 L-18.24495040704318 -25.616412167063476 L-11.772814452043601 -20.914130148723693 A24 24 0 0 1 -2.768610302618924 -23.839773425773835 L-2.768610302618924 -23.839773425773835 L-0.2964743476193461 -31.448225556135064 L18.724655978283714 -25.267885668636126 L16.252520023284138 -17.659433538274897 A24 24 0 0 1 21.817424229271428 -10 M0 -14A14 14 0 1 0 0 14 A14 14 0 1 0 0 -14"
+                                                fill="#1e6f5c"></path>
+                                        </g>
                                     </g>
-                                </g>
-                            </svg>
-                        </button>
+                                    <!-- [ldio] generated by https://loading.io/ -->
+                                </svg>
+                            </span>
+                            <button type="button" @click="addmodal=false"
+                                class="inline-flex  justify-center rounded-md border border-transparent px-4 py-2  text-base leading-6 font-bold text-red-500 bg-gray-100 shadow-sm  focus:outline-none  transition ease-in-out duration-150  sm:leading-5">
+                                Close
+                            </button>
+                            <button type="button" wire:click="saveOffice"
+                                class="inline-flex  justify-center rounded-md border border-transparent px-4 py-2 bg-main text-base leading-6 font-bold text-white shadow-sm hover:bg-main1 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition ease-in-out duration-150  sm:leading-5">
+                                Save
+                            </button>
+                        </div>
+
                     </div>
+
 
                 </div>
             </div>
         </div>
     </div>
     <div class="mt-4" x-data="{manage: @entangle('manageslider')}">
-        <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        {{-- <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             @forelse ($offices as $office)
                 <li wire:click="manage({{ $office->id }})"
                     class="col-span-1 cursor-pointer relative flex flex-col h-20 justify-center  p-2 bg-gradient-to-tl from-main to-white border-2 border-main text-gray-700 hover:text-white  rounded-lg shadow-md">
@@ -99,6 +99,63 @@
             @empty
                 <span>No School Office...</span>
             @endforelse
+        </ul> --}}
+        <ul role="list" class="grid grid-cols-1 gap-4  sm:grid-cols-2 lg:grid-cols-4">
+            @forelse ($offices as $office)
+
+                <li wire:click="manage({{ $office->id }})"
+                    class="col-span-1 cursor-pointer bg-white to-transparent  rounded-lg shadow divide-y divide-gray-200">
+
+                    <div>
+                        <div>
+                            <div class="bg-main h-9 w-full relative">
+                                <img src="{{ asset('images/sksu-bg.jpg') }}"
+                                    class="absolute top-0 h-full w-full object-cover opacity-50" alt="">
+                            </div>
+                        </div>
+                        <div class="max-w-5xl mx-auto px-4 relative sm:px-6 lg:px-4 mb-4">
+                            <div class="-mt-10 sm:-mt-16 sm:flex sm:items-end sm:space-x-5">
+                                <div class="flex">
+                                    <img class="h-12 w-12 rounded-full ring-4 ring-white sm:h-12 sm:w-12"
+                                        src="{{ asset('images/SKSULogo.png') }}" alt="">
+                                </div>
+                                <div
+                                    class="mt-10 sm:flex-1 sm:min-w-0 sm:flex sm:items-center sm:justify-end sm:space-x-5 sm:pb-1">
+                                    <div class="sm:hidden md:block mt-6 bg-white min-w-0 flex-1">
+                                        <h1 class="text-xl font-bold uppercase text-main truncate">
+                                            {{ $office->office_name }}
+                                        </h1>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </li>
+
+
+
+                {{-- <li wire:click="manage({{ $office->id }})"
+                    class="col-span-1 cursor-pointer bg-gradient-to-bl from-gray-400 border-2 border-gray-400 to-transparent  rounded-lg shadow divide-y divide-gray-200">
+                    <div class="w-full flex items-center justify-between p-6 space-x-6">
+                        <div class="flex-1 truncate">
+                            <div class="flex items-center space-x-3">
+                                <h3 class="text-gray-700 text-lg uppercase font-bold  truncate">
+                                    {{ $office->office_name }}</h3>
+
+                            </div>
+                        </div>
+                        <img class="w-10 h-10 bg-gray-300 rounded-full flex-shrink-0"
+                            src="{{ asset('images/SKSULogo.png') }}" alt="">
+                    </div>
+
+                </li> --}}
+            @empty
+
+            @endforelse
+
+            <!-- More people... -->
         </ul>
         <div x-show="manage" class="fixed inset-0 z-50 overflow-hidden" aria-labelledby="slide-over-title" role="dialog"
             aria-modal="true">
@@ -141,11 +198,42 @@
                                     <div class="absolute inset-0 py-6 px-4 sm:px-6">
                                         <div class="h-full " aria-hidden="true">
                                             <div class="flex items-end space-x-3">
-                                                <div
-                                                    class="col-span-1 cursor-pointer relative flex flex-col h-20 justify-center  p-2 bg-gradient-to-tl from-main to-white border-2 border-main text-gray-700 hover:text-white  rounded-lg shadow-md">
-                                                    <p class="text-xl  relative z-50 font-bold uppercase ">CAMPUS
-                                                        {{ $name }}</p>
-                                                </div>
+                                                <li wire:click="manage({{ $office->id }})"
+                                                    class="col-span-1 cursor-pointer bg-white to-transparent  rounded-lg shadow divide-y divide-gray-200">
+
+                                                    <div>
+                                                        <div>
+                                                            <div class="bg-main h-9 w-full relative">
+                                                                <img src="{{ asset('images/sksu-bg.jpg') }}"
+                                                                    class="absolute top-0 h-full w-full object-cover opacity-50"
+                                                                    alt="">
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="max-w-5xl mx-auto px-4 relative sm:px-6 lg:px-4 mb-2">
+                                                            <div
+                                                                class="-mt-10 sm:-mt-16 sm:flex sm:items-end sm:space-x-5">
+                                                                <div class="flex">
+                                                                    <img class="h-12 w-12 rounded-full ring-4 ring-white sm:h-12 sm:w-12"
+                                                                        src="{{ asset('images/SKSULogo.png') }}"
+                                                                        alt="">
+                                                                </div>
+                                                                <div
+                                                                    class="mt-10 sm:flex-1 sm:min-w-0 sm:flex sm:items-center sm:justify-end sm:space-x-5 sm:pb-1">
+                                                                    <div
+                                                                        class="sm:hidden md:block mt-6 bg-white min-w-0 flex-1">
+                                                                        <h1
+                                                                            class="text-xl font-bold uppercase text-main truncate">
+                                                                            {{ $name }}
+                                                                        </h1>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </li>
                                                 <div class="flex space-x-1">
                                                     <button class="text-main">
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"

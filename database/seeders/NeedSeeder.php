@@ -7,7 +7,9 @@ use App\Models\UserType;
 use App\Models\Campus;
 use App\Models\Program;
 use App\Models\User;
+use App\Models\AppointmentSchedule;
 use Illuminate\Support\Facades\Hash;
+
 class NeedSeeder extends Seeder
 {
     /**
@@ -19,15 +21,15 @@ class NeedSeeder extends Seeder
     {
         UserType::create([
             'type' => 'administrator',
-          
+
         ]);
         UserType::create([
             'type' => 'office',
-          
+
         ]);
         UserType::create([
             'type' => 'student',
-          
+
         ]);
 
         User::create([
@@ -51,6 +53,15 @@ class NeedSeeder extends Seeder
 
         Campus::create([
             'campus_name' => 'Isulan',
+        ]);
+
+        AppointmentSchedule::create([
+            'office_id' => 1,
+            'title' => 'schedule 1',
+            'notes' => 'loremsbdashbdhsbd asdjbsadjh sadbjhhdbjasbd',
+            'start_date' => '2022-01-03',
+            'end_date' => '2022-01-03',
+            'slot' => 5,
         ]);
     }
 }

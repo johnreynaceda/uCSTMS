@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('breadcrumb')
-    Dashboard
+    <span>QUERY MANAGEMENT</span>
 @endsection
 @section('main')
     @livewire('office-query')

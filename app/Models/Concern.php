@@ -22,4 +22,7 @@ class Concern extends Model
     public function medias(){
         return $this->hasMany(Media::class);
     }
+    public function feedbacks(){
+        return $this->hasMany(Feedback::class);
+    }
 }

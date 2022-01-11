@@ -18,37 +18,48 @@ use Laravel\Socialite\Facades\Socialite;
 */
 
 Route::get('/', function () {
+    return view('layouts.sample');
+});
+
+Route::get('/', function () {
     return view('welcome');
 })->middleware('checktype');
 
-Route::get('test', function() {
-    Storage::disk('google')->put('test.txt', 'Hello World');
-});
+// Route::get('test', function () {
+//     Storage::disk('google')->put('test.txt', 'Hello World');
+// });
 
-Route::get('auth/google',[LoginController::class, 'redirectToGoogle'])->name('google-login');
-Route::get('auth/google/callback',[LoginController::class, 'handleGoogleCallback'])->name('google-callback');
+Route::get('auth/google', [LoginController::class, 'redirectToGoogle'])->name('google-login');
+Route::get('auth/google/callback', [LoginController::class, 'handleGoogleCallback'])->name('google-callback');
 
 
 
 
 //ADMINISTRATOR
-Route::middleware('admin')->prefix('administrator')->group(function(){
-Route::get('/', [AdminController::class, 'index'])->name('admin-dashboard');
-Route::get('/school-office', [AdminController::class, 'office'])->name('admin-office');
+Route::middleware('admin')->prefix('administrator')->group(function () {
+    Route::get('/', [AdminController::class, 'index'])->name('admin-dashboard');
+    Route::get('/school-office', [AdminController::class, 'office'])->name('admin-office');
 });
 
 
 //SCHOOL OFFICES
-Route::middleware('office')->prefix('office')->group(function(){
-Route::get('/', [OfficeController::class, 'index'])->name('office-dashboard');
-Route::get('/query', [OfficeController::class, 'query'])->name('office-query');
-
+Route::middleware('office')->prefix('office')->group(function () {
+    Route::get('/', [OfficeController::class, 'index'])->name('office-dashboard');
+    Route::get('/query', [OfficeController::class, 'query'])->name('office-query');
+    Route::get('/query/{id}', [OfficeController::class, 'openQuery'])->name('office-openquery');
+    Route::get('/service', [OfficeController::class, 'service'])->name('office-service');
+    Route::get('/appointment', [OfficeController::class, 'appointment'])->name('office-appointment');
+    Route::get('/calendar', [OfficeController::class, 'calendar'])->name('office-calendar');
+    Route::get('/manage-appointment', [OfficeController::class, 'manageAppointment'])->name('office-manageAppointment');
 });
 
 
 //STUDENT
-Route::middleware('student')->prefix('student')->group(function(){
-Route::get('/', [StudentController::class, 'index'])->name('student-dashboard');
+Route::middleware('student')->prefix('student')->group(function () {
+    Route::get('/', [StudentController::class, 'index'])->name('student-dashboard');
+    Route::get('/query/{id}', [StudentController::class, 'query'])->name('student-query');
+    Route::get('/student-service', [StudentController::class, 'service'])->name('student-service');
+    Route::get('/student-appointment', [StudentController::class, 'appointment'])->name('student-appointment');
 });
 
 
@@ -62,7 +73,7 @@ Route::get('/', [StudentController::class, 'index'])->name('student-dashboard');
 // })->name('admin-office');
 
 
-Route::get('/redirect', fn()=>view('login'))->middleware(['checktype', 'auth']);
+Route::get('/redirect', fn () => view('login'))->middleware(['checktype', 'auth']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
